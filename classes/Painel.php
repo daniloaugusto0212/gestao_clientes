@@ -70,8 +70,8 @@
  
 		public static function imagemValida($imagem){
 			if($imagem['type'] == 'image/jpeg' ||
-				$imagem['type'] == 'imagem/jpg' ||
-				$imagem['type'] == 'imagem/png'){
+				$imagem['type'] == 'image/jpg' ||
+				$imagem['type'] == 'image/png'){
  
 				$tamanho = intval($imagem['size']/1024);
 				if($tamanho < 300)
