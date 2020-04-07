@@ -475,7 +475,54 @@ form .form-group-login:nth-of-type(2){
     top: 10px;
 }
 
+.box-single-wraper{
+    float: left;
+    width: 33.3%;
+    padding: 20px;
+}
+
+.box-single{
+    width: 100%;
+    border: 1px solid #ccc;
+    min-height: 240px;
+    overflow-x: auto;
+}
+
+.topo-box{
+    text-align: center;
+    color: #ccc;
+    padding: 8px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.topo-box h2{
+    font-size: 36px;
+}
+
+.body-box{
+    padding: 10px;
+}
+
+.body-box p{
+    color: #646464;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.group-btn{margin-top: 15px;}
+
+.group-btn a{
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    padding: 3px 8px;
+}
+
 @media screen and (max-width:1024px){
+    .box-single-wraper{
+        width: 100%;
+        min-height: 0;
+    }
     .box-metrica-single{        
         width: 100%;
     }

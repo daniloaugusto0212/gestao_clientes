@@ -23,6 +23,10 @@
         $cnpj = $_POST['cnpj'];
     }
     $imagem = "";
+    if ($nome == "" || $email == "" || $tipo == "" ) {
+        $data['sucesso'] = false;
+        $data['mensagem'] = "Atenção, campos vazios não são permitidos.";
+    }
 
     if (isset($_FILES['imagem'])) {
         if (Painel::imagemValida($_FILES['imagem'])) {        
