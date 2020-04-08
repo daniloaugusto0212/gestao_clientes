@@ -8,6 +8,15 @@
 		'1' => 'Sub Administrador',
 		'2' => 'Administrador'];
 
+		public static function loadJS($files,$page){
+			$url = explode('/',@$_GET['url'])[0];
+			if ($page == $url) {
+				foreach ($files as $key => $value) {
+					echo '<script src="'.INCLUDE_PATH_PAINEL.'js/'.$value.'" ></script>';
+				}
+			}
+		}
+
 		public static function generateSlug($str){
 			$str = mb_strtolower($str);
 			$str = preg_replace('/(â|á|à|ã)/', 'a', $str);

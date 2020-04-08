@@ -499,6 +499,11 @@ form .form-group-login:nth-of-type(2){
     font-size: 36px;
 }
 
+.topo-box img{
+    display: block;
+    max-width: 150px;
+    margin: 0 auto;
+}
 .body-box{
     padding: 10px;
 }

@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="<?php echo INCLUDE_PATH_PAINEL ?>css/style.css">
 </head>
 <body>
+
+<base base="<?php echo INCLUDE_PATH_PAINEL; ?>">
 <div class="menu">
     <div class="menu-wraper">
         <div class="box-usuario">
@@ -82,7 +84,8 @@
 </div><!--content-->
 <script src="<?php echo INCLUDE_PATH ?>js/jquery.js"></script> 
 <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/jquery.mask.js"></script>
-<script src="<?php echo INCLUDE_PATH_PAINEL ?>js/jquery.ajaxform.js"></script>  
+<script src="<?php echo INCLUDE_PATH_PAINEL ?>js/jquery.ajaxform.js"></script> 
+<script src="<?php echo INCLUDE_PATH ?>js/constants.js"></script> 
 <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/main.js"></script>
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js" referrerpolicy="origin"></script>
 <script>tinymce.init({
@@ -92,6 +95,7 @@
     });</script>
     <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/helperMask.js" ></script>
     <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/ajax.js" ></script>
+    <?php Painel::loadJS(array('clientes.js'),'gerenciar-clientes'); ?>
 </body>
 </html>
 
