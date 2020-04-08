@@ -93,9 +93,10 @@
     plugins: "image",
     height:300
     });</script>
-    <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/helperMask.js" ></script>
-    <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/ajax.js" ></script>
-    <?php Painel::loadJS(array('clientes.js'),'gerenciar-clientes'); ?>
+    <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/helperMask.js" ></script>    
+    <?php Painel::loadJS(array('ajax.js'),'gerenciar-clientes'); ?>
+    <?php Painel::loadJS(array('ajax.js'),'cadastrar-clientes'); ?>
+    <?php Painel::loadJS(array('ajax.js'),'editar-cliente'); ?>
 </body>
 </html>
 

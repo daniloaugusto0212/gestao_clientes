@@ -502,6 +502,7 @@ form .form-group-login:nth-of-type(2){
 .topo-box img{
     display: block;
     max-width: 150px;
+    max-height: 70px;
     margin: 0 auto;
 }
 .body-box{

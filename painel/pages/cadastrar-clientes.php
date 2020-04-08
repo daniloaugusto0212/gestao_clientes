@@ -1,4 +1,3 @@
-
 <?php
     verificaPermissaoPagina(2);
     
@@ -39,6 +38,10 @@
         <div class="form-group">
             <label>Imagem</label>
             <input type="file" name="imagem" >            
+        </div><!--form-group-->
+
+        <div class="form-group">            
+            <input type="hidden" name="tipo_acao" value="cadastrar_cliente" >            
         </div><!--form-group-->
 
         <div class="form-group">            
