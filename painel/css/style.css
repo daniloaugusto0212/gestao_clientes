@@ -427,8 +427,9 @@ a.btn.order{background: #04A65A;}
 }
 
 .box-content form input[type=submit]{
-    width: 100px;
+    width: auto;
     height: 40px;
+    padding: 3px 8px;
     cursor: pointer;
     margin-top: 10px;
     font-size: 16px;
@@ -475,16 +476,20 @@ form .form-group-login:nth-of-type(2){
     top: 10px;
 }
 
-.box-single-wraper{
-    float: left;
+.boxes{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box-single-wraper{   
     width: 33.3%;
     padding: 20px;
 }
 
 .box-single{
     width: 100%;
-    border: 1px solid #ccc;
-    min-height: 240px;
+    height: 100%;
+    border: 1px solid #ccc;    
     overflow-x: auto;
 }
 
@@ -522,6 +527,32 @@ form .form-group-login:nth-of-type(2){
     text-decoration: none;
     color: white;
     padding: 3px 8px;
+}
+
+.busca{
+    margin: 10px 0;
+    width: 100%;
+    padding: 8px 10px;
+    background: #ccc;
+}
+
+.busca form{
+    margin: 0;
+}
+
+.busca h4{
+    font-weight: lighter;
+    font-size: 22px;
+    color: #646464;
+}
+
+.busca-result{
+    color: #646464;    
+    border-top: 3px solid #ccc;
+}
+
+.busca-result p{
+    font-size: 16px;
 }
 
 @media screen and (max-width:1024px){
@@ -574,7 +605,16 @@ form .form-group-login:nth-of-type(2){
 
 
 @media screen and (max-width:400px){
+    .box-content{
+        padding: 8px 2%;
+    }
     .menu-wraper{
         width: 200px; 
     }       
+}
+
+@media screen and (max-width:380px){
+    .items-menu a{
+        font-size: 15px;
+    }
 }

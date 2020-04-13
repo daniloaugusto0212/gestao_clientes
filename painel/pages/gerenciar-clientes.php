@@ -1,12 +1,27 @@
 
 <div class="box-content">
     <h2><i class="far fa-list-alt"></i> Clientes Cadastrados</h2>
+    <div class="busca">
+        <h4> <i class="fa fa-search" ></i> Realizar uma busca</h4>
+        <form method="post" >
+            <input placeholder="Procure por: nome, e-mail, cpf ou cnpj" type="text" name="busca">
+            <input type="submit" name="acao" value="Buscar">
+        </form>
+    </div><!--busca-->
     
-    <div class="boxes">
+    <div class="boxes">        
     <?php
-        $clientes = MySql::conectar()->prepare("SELECT * FROM `tb_admin.clientes`");
+        $query ="";
+        if(isset($_POST['acao'])){
+            $busca = $_POST['busca'];
+            $query = " WHERE nome LIKE '%$busca%' OR email LIKE '%$busca%' OR cpf_cnpj LIKE '%$busca%'"; 
+        }
+        $clientes = MySql::conectar()->prepare("SELECT * FROM `tb_admin.clientes` $query");
         $clientes->execute();
         $clientes = $clientes->fetchAll();
+        if (isset($_POST['acao'])) {
+            echo '<div class="busca-result"><p>Foram encontrados <b>'.count($clientes).'</b> resultados</p></div>';
+        }
         foreach($clientes as $value) { 
                 
         ?>
