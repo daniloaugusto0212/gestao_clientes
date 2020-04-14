@@ -82,7 +82,7 @@
 
     <h2><i class="fas fa-user-edit"></i> Adicionar Pagamentos</h2>
         
-    <form method="post">
+    <form  method="post">
 <?php 
     if(isset($_POST['acao'])){
         $cliente_id = $id;
@@ -95,6 +95,10 @@
         $numero_parcelas = $_POST['parcelas'];
         $status = 0;
         $vencimentoOriginal = $_POST['vencimento']; 
+        
+        if (strtotime($vencimentoOriginal) < strtotime(date(Y-m-d))) {
+            Painel::alert('erro','A data não pode ser anterior a de hoje.');
+        }else{
 
         for ($i=0; $i < $numero_parcelas; $i++) { 
             $vencimento = strtotime($vencimentoOriginal) + (($i* $intervalo) * (60*60*24));
@@ -102,11 +106,13 @@
             $sql->execute(array($cliente_id,$nome,$valor,date('Y-m-d',$vencimento),$status ));
 
         }
-
         Painel::alert('sucesso','O pagamento foi inserido com sucesso!');
         
-
+        }
+        
+       
     }
+    
 
 ?>
 
@@ -135,21 +141,58 @@
     </div><!--form-group-->
     </form>
 
+    <?php
+    
+    if(isset($_GET['pago'])){
+        $sql = MySql::conectar()->prepare("UPDATE `tb_admin.financeiro` SET status = 1 WHERE id = ?");
+        $sql->execute(array($_GET['pago']));
+        Painel::alert('sucesso','O pagamento foi quitado com sucesso!');
+        
+    }
+?>
+
     <h2><i class="fas fa-money-check-alt"></i> Pagamentos Pendentes</h2>
     <div class="wraper-table">
         <table>
             <tr>
-                <td>Nome do pagamento</td>
-               
+                <td>Nome do pagamento</td>               
                 <td>Cliente</td>
                 <td>Valor</td>
                 <td>Vencimento</td>
-                <td>#</td>
+                <td>Enviar e-mail</td>
+                <td>Marcar Pago</td>
             </tr>
+
+            <?php
+                $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.financeiro` WHERE status = 0 AND cliente_id = $id ORDER BY vencimento ASC");
+                $sql->execute();
+                $pendentes = $sql->fetchAll();
+
+                foreach ($pendentes as $key => $value) {
+                    $clienteNome = MySql::conectar()->prepare("SELECT `nome` FROM `tb_admin.clientes` WHERE id = $value[cliente_id] ");
+                    $clienteNome->execute();
+                    $clienteNome =$clienteNome->fetch()['nome'];
+                    $style ="";
+                    if (strtotime(date('Y-m-d')) >= strtotime($value['vencimento'])) {
+                        $style = 'style="background:#ff7070;font-weight:bold;"';
+                    }
+                    ?>
+                <tr <?php echo $style; ?> >
+                    <td> <?php echo $value['nome'];?> </td>
+                    <td> <?php echo $clienteNome;?> </td>
+                    <td><?php echo $value['valor'];?></td>
+                    <td><?php echo date('d/m/Y',strtotime($value['vencimento']));?></td>
+                    <td><a class="btn edit" href="<?php echo INCLUDE_PATH_PAINEL ?>"><i class="fa fa-envelope" ></i> Email</a></td>
+                    <td><a style="background:#00bfa5;" class="btn" action="<?php $pagoEm = date('d/m/Y-s',time());?>" href="<?php echo INCLUDE_PATH_PAINEL ?>editar-cliente?id=<?php echo $id;?>&pago=<?php echo $value['id'];?>"><i class="fa fa-check"></i> Pago</a></td>
+                    
+                </tr>
+                <?php } ?>
+            
 
             
         </table>
     </div><!--wraper-table-->
+    
 
     <h2><i class="fas fa-money-check-alt"></i> Pagamentos Concluídos</h2>
     <div class="wraper-table">
@@ -160,8 +203,31 @@
                 <td>Cliente</td>
                 <td>Valor</td>
                 <td>Vencimento</td>
+                <td>Pago em</td>
                 
             </tr>
+
+            <?php
+                $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.financeiro` WHERE status = 1 AND cliente_id = $id ORDER BY vencimento ASC");
+                $sql->execute();
+                $pendentes = $sql->fetchAll();
+
+                foreach ($pendentes as $key => $value) {
+                    $clienteNome = MySql::conectar()->prepare("SELECT `nome` FROM `tb_admin.clientes` WHERE id = $value[cliente_id] ");
+                    $clienteNome->execute();
+                    $clienteNome =$clienteNome->fetch()['nome'];
+                   
+                    ?>
+                <tr >
+                    <td> <?php echo $value['nome'];?> </td>
+                    <td> <?php echo $clienteNome;?> </td>
+                    <td><?php echo $value['valor'];?></td>
+                    <td><?php echo date('d/m/Y',strtotime($value['vencimento']));?></td>
+                    <td><?php echo $pagoEm;?></td>                    
+                    
+                </tr>
+                <?php } ?>
+            
 
             
         </table>

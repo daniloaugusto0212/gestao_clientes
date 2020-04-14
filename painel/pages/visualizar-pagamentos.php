@@ -3,13 +3,32 @@
     <div class="wraper-table">
         <table>
             <tr>
-                <td>Nome do pagamento</td>
-               
+                <td>Nome do pagamento</td>               
                 <td>Cliente</td>
                 <td>Valor</td>
                 <td>Vencimento</td>
                 <td>#</td>
             </tr>
+
+            <?php
+                $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.financeiro` WHERE status = 0 ORDER BY vencimento ASC");
+                $sql->execute();
+                $pendentes = $sql->fetchAll();
+
+                foreach ($pendentes as $key => $value) {
+                    $clienteNome = MySql::conectar()->prepare("SELECT `nome` FROM `tb_admin.clientes` WHERE id = $value[cliente_id] ");
+                    $clienteNome->execute();
+                    $clienteNome =$clienteNome->fetch()['nome'];
+                    ?>
+                <tr>
+                    <td> <?php echo $value['nome'];?> </td>
+                    <td> <?php echo $clienteNome;?> </td>
+                    <td><?php echo $value['valor'];?></td>
+                    <td><?php echo date('d/m/Y',strtotime($value['vencimento']));?></td>
+                    
+                </tr>
+                <?php } ?>
+            
 
             
         </table>
