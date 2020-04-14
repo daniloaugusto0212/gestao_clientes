@@ -83,6 +83,33 @@
     <h2><i class="fas fa-user-edit"></i> Adicionar Pagamentos</h2>
         
     <form method="post">
+<?php 
+    if(isset($_POST['acao'])){
+        $cliente_id = $id;
+        $nome = $_POST['nome_pagto'];
+        //$valor = str_replace('.','',$_POST['valor']);
+        //$valor = str_replace(',','.',$valor);
+        $valor = $_POST['valor'];
+        $intervalo = $_POST['intervalo'];
+        $vencimento = $_POST['vencimento'];
+        $numero_parcelas = $_POST['parcelas'];
+        $status = 0;
+        $vencimentoOriginal = $_POST['vencimento']; 
+
+        for ($i=0; $i < $numero_parcelas; $i++) { 
+            $vencimento = strtotime($vencimentoOriginal) + (($i* $intervalo) * (60*60*24));
+            $sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.financeiro` VALUES (null,?,?,?,?,?)");
+            $sql->execute(array($cliente_id,$nome,$valor,date('Y-m-d',$vencimento),$status ));
+
+        }
+
+        Painel::alert('sucesso','O pagamento foi inserido com sucesso!');
+        
+
+    }
+
+?>
+
     <div class="form-group">
             <label>Nome do Pagamento </label>
             <input type="text" name="nome_pagto">
@@ -94,6 +121,10 @@
     <div class="form-group">
         <label>Número de Parcelas </label>
         <input type="text" name="parcelas">
+    </div><!--form-group-->
+    <div class="form-group">
+        <label>Intervalo </label>
+        <input type="text" name="intervalo">
     </div><!--form-group-->
     <div class="form-group">
         <label>Vencimento </label>

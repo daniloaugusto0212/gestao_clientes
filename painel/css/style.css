@@ -84,7 +84,7 @@ header{
     position: relative;
     left: 300px;
     padding: 10px 0;
-    background: #78909c ;
+    background: #383838f2 ;
     width: calc(100% - 300px);
 }
 
@@ -123,7 +123,7 @@ div.menu{
     position: fixed;
     left: 0;
     top: 0;
-    background:#1e698f;
+    background:#2B2B2B;
     float: left;
     width: 300px;
 }
@@ -138,7 +138,7 @@ div.box-usuario{
     width: 130px;
     height: 130px;
     border-radius: 50%;
-    border:3px solid rgb(48, 156, 199);
+    border:3px solid #525252;
 }
 
 .imagem-usuario{
@@ -147,7 +147,7 @@ div.box-usuario{
     height: 130px;
     position: relative;
     border-radius: 50%;
-    border:3px solid rgb(48, 156, 199);
+    border:3px solid #525252;
 }
 
 .imagem-usuario img{
@@ -167,7 +167,7 @@ div.box-usuario{
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%); /*Para funcionar no IE*/
     font-size: 50px;    
-    color:rgb(48, 156, 199);
+    color:#525252;
 }
 
 .nome-usuario{
@@ -189,7 +189,7 @@ div.box-usuario{
     text-align: left;
     font-weight: normal;
     font-size: 17px;
-    background: rgb(48, 156, 199); 
+    background: #525252; 
     color: white;
     padding: 8px;
     
@@ -202,7 +202,7 @@ div.box-usuario{
     font-size: 16px;
     text-decoration: none;
     color: white;
-    border-bottom: 2px solid rgb(48, 156, 199);  
+    border-bottom: 2px solid #525252;  
     
 }
 
@@ -457,7 +457,7 @@ a.btn.order{background: #04A65A;}
 }
 
 .menu-active{
-    background: rgb(33, 127, 165);
+    background: #441c1cf2;
 }
 
 .menu-active::before{
