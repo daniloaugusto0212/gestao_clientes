@@ -84,19 +84,27 @@
         
     <form method="post">
     <div class="form-group">
-            <label>Valor do Pagamanto</label>
-            <input type="text" name="valor">
+            <label>Nome do Pagamento </label>
+            <input type="text" name="nome_pagto">
         </div><!--form-group-->
-        <div class="form-group">
-            <label>Número de Parcelas </label>
-            <input type="text" name="parcelas">
-        </div><!--form-group-->
-        <div class="form-group">            
-            <input type="submit" name="acao" value="Inserir Pagamento">
-        </div><!--form-group-->
+    <div class="form-group">
+        <label>Valor do Pagamento</label>
+        <input type="text" name="valor">
+    </div><!--form-group-->
+    <div class="form-group">
+        <label>Número de Parcelas </label>
+        <input type="text" name="parcelas">
+    </div><!--form-group-->
+    <div class="form-group">
+        <label>Vencimento </label>
+        <input type="text" name="vencimento">
+    </div><!--form-group-->
+    <div class="form-group">            
+        <input type="submit" name="acao" value="Inserir Pagamento">
+    </div><!--form-group-->
     </form>
 
-    <h2><i class="fas fa-money-check-alt"></i> Pagamentos</h2>
+    <h2><i class="fas fa-money-check-alt"></i> Pagamentos Pendentes</h2>
     <div class="wraper-table">
         <table>
             <tr>
@@ -106,6 +114,22 @@
                 <td>Valor</td>
                 <td>Vencimento</td>
                 <td>#</td>
+            </tr>
+
+            
+        </table>
+    </div><!--wraper-table-->
+
+    <h2><i class="fas fa-money-check-alt"></i> Pagamentos Concluídos</h2>
+    <div class="wraper-table">
+        <table>
+            <tr>
+                <td>Nome do pagamento</td>
+               
+                <td>Cliente</td>
+                <td>Valor</td>
+                <td>Vencimento</td>
+                
             </tr>
 
             
