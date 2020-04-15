@@ -223,7 +223,7 @@
                     <td> <?php echo $clienteNome;?> </td>
                     <td><?php echo $value['valor'];?></td>
                     <td><?php echo date('d/m/Y',strtotime($value['vencimento']));?></td>
-                    <td><?php echo $pagoEm;?></td>                    
+                                   
                     
                 </tr>
                 <?php } ?>
