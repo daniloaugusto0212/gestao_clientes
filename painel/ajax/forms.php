@@ -99,6 +99,8 @@
         $imagem = $sql->fetch()['imagem'];
         @unlink('../uploads/'.$imagem);
         MySql::conectar()->exec("DELETE FROM `tb_admin.clientes` WHERE id = $id");
+        MySql::conectar()->exec("DELETE FROM `tb_admin.financeiro` WHERE cliente_id = $id");
+
 
     }    
 

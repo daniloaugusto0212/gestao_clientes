@@ -1,6 +1,7 @@
 <?php
 session_start();
 date_default_timezone_set('America/Sao_Paulo');
+require('vendor/autoload.php');
 $autoload = function($class){
     if($class == 'Email'){
       include_once('classes/phpmailer/PHPMailerAutoload.php');  

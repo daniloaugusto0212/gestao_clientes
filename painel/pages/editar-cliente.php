@@ -96,7 +96,7 @@
         $status = 0;
         $vencimentoOriginal = $_POST['vencimento']; 
         
-        if (strtotime($vencimentoOriginal) < strtotime(date(Y-m-d))) {
+        if (strtotime($vencimentoOriginal) < strtotime(date('Y-m-d'))) {
             Painel::alert('erro','A data não pode ser anterior a de hoje.');
         }else{
 
@@ -183,7 +183,7 @@
                     <td><?php echo $value['valor'];?></td>
                     <td><?php echo date('d/m/Y',strtotime($value['vencimento']));?></td>
                     <td><a class="btn edit" href="<?php echo INCLUDE_PATH_PAINEL ?>"><i class="fa fa-envelope" ></i> Email</a></td>
-                    <td><a style="background:#00bfa5;" class="btn" action="<?php $pagoEm = date('d/m/Y-s',time());?>" href="<?php echo INCLUDE_PATH_PAINEL ?>editar-cliente?id=<?php echo $id;?>&pago=<?php echo $value['id'];?>"><i class="fa fa-check"></i> Pago</a></td>
+                    <td><a style="background:#00bfa5;" class="btn"  href="<?php echo INCLUDE_PATH_PAINEL ?>editar-cliente?id=<?php echo $id;?>&pago=<?php echo $value['id'];?>"><i class="fa fa-check"></i> Pago</a></td>
                     
                 </tr>
                 <?php } ?>
@@ -203,7 +203,7 @@
                 <td>Cliente</td>
                 <td>Valor</td>
                 <td>Vencimento</td>
-                <td>Pago em</td>
+                
                 
             </tr>
 

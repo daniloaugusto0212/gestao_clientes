@@ -554,6 +554,18 @@ form .form-group-login:nth-of-type(2){
 .busca-result p{
     font-size: 16px;
 }
+.gerar-pdf{
+    display: block;
+    margin: 8px 0 ;
+
+}
+
+.gerar-pdf a{        
+    color: white;
+    padding: 3px 8px;
+    background: #f75353;
+    text-decoration: none;
+}
 
 @media screen and (max-width:1024px){
     .box-single-wraper{
