@@ -11,6 +11,20 @@
         </form>
     </div><!--busca-->
     <?php 
+
+    if (isset($_GET['deletar'])) {
+        //Deletar o produto
+        $id = (int)$_GET['deletar'];
+        $imagens = MySql::conectar()->prepare("SELECT * FROM `tb_admin.estoque_imagens` WHERE produto_id = $id" );
+        $imagens->execute();
+        $imagens = $imagens->fetchAll();
+        foreach ($imagens as $key => $value) {
+            @unlink(BASE_DIR_PAINEL.'/uploads/'.$value['imagem']);
+        }
+        MySql::conectar()->exec("DELETE FROM `tb_admin.estoque_imagens` WHERE produto_id = $id");
+        MySql::conectar()->exec("DELETE FROM `tb_admin.estoque` WHERE id = $id");
+        Painel::alert('sucesso', 'O produto foi deletado com sucesso!');
+    }
     if (isset($_POST['atualizar'])) {
         $quantidade = $_POST['quantidade'];
         $produto_id = $_POST['produto_id'];
@@ -78,7 +92,7 @@
                     </div><!--group-btn-->
                     
                     <div class="group-btn">
-                        <a class="btn delete" item_id="<?php echo $value['id']; ?>"  href="<?php echo INCLUDE_PATH_PAINEL ?>"><i class="fa fa-times"></i> Excluir</a>
+                        <a class="btn delete" item_id="<?php echo $value['id']; ?>"  href="<?php echo INCLUDE_PATH_PAINEL ?>visualizar-produtos?deletar=<?php echo $value['id'] ?>"><i class="fa fa-times"></i> Excluir</a>
                         <a class="btn edit" href="<?php echo INCLUDE_PATH_PAINEL ?>editar-produto?id=<?php echo $value['id']; ?>"><i class="fa fa-pen" ></i> Editar</a>
                        
                     </div><!--group-btn-->
@@ -159,7 +173,7 @@
                     </div><!--group-btn-->
                     
                     <div class="group-btn">
-                        <a class="btn delete" item_id="<?php echo $value['id']; ?>"  href="<?php echo INCLUDE_PATH_PAINEL ?>"><i class="fa fa-times"></i> Excluir</a>
+                        <a class="btn delete" item_id="<?php echo $value['id']; ?>"  href="<?php echo INCLUDE_PATH_PAINEL ?>visualizar-produtos?deletar=<?php echo $value['id'] ?>"><i class="fa fa-times"></i> Excluir</a>
                         <a class="btn edit" href="<?php echo INCLUDE_PATH_PAINEL ?>editar-produto?id=<?php echo $value['id']; ?>"><i class="fa fa-pen" ></i> Editar</a>
                        
                     </div><!--group-btn-->
