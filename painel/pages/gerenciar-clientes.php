@@ -49,9 +49,10 @@
                         }
                     ?>:</b> <?php echo $value['cpf_cnpj']; ?></p>
                     <div class="group-btn">
+                        <a class="btn delete" item_id="<?php echo $value['id']; ?>"  href="<?php echo INCLUDE_PATH_PAINEL ?>"><i class="fa fa-times"></i> Excluir</a>
                         <a class="btn edit" href="<?php echo INCLUDE_PATH_PAINEL ?>editar-cliente?id=<?php echo $value['id']; ?>"><i class="fa fa-pen" ></i> Editar</a>
 
-                        <a class="btn delete" item_id="<?php echo $value['id']; ?>"  href="<?php echo INCLUDE_PATH_PAINEL ?>"><i class="fa fa-times"></i> Excluir</a>
+                       
                     </div><!--group-btn-->
                 </div><!--body-box-->
 

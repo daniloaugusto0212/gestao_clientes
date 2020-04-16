@@ -1,5 +1,4 @@
-<?php
-      
+<?php      
     include('../../includeConstants.php'); 
 
     $data['sucesso'] = true;
@@ -47,7 +46,7 @@
                 $dadoFinal = ($cpf == '') ? $cnpj : $cpf;
                 $sql->execute(array($nome,$email,$tipo,$dadoFinal,$imagem));
                 //Tudo ok, só cadastrar
-                $data['mensagem'] = 'O cliente fo cadastrad com sucesso!';
+                $data['mensagem'] = 'O cliente foi cadastrado com sucesso!';
         }
 
     }else if (isset($_POST['tipo_acao']) && $_POST['tipo_acao'] == 'atualizar_cliente') {
@@ -91,13 +90,14 @@
             $data['mensagem'] = "O cliente foi atualizado com sucesso!";
         }
         
-    }else if (isset($_POST['tipo_acao']) && $_POST['tipo_acao'] == 'delete_cliente') {
+    }else if (isset($_POST['tipo_acao']) && $_POST['tipo_acao'] == 'deletar_cliente') {
         $id = $_POST['id'];
 
-        $sql = MySql::conectar()->prepare("SELECT imagem FROM `tb_admin.clientes` WHERE id = $id");
+        $sql = MySql::conectar()->prepare("SELECT `imagem` FROM `tb_admin.clientes` WHERE id = $id");
         $sql->execute();
         $imagem = $sql->fetch()['imagem'];
         @unlink('../uploads/'.$imagem);
+        echo "chamando";
         MySql::conectar()->exec("DELETE FROM `tb_admin.clientes` WHERE id = $id");
         MySql::conectar()->exec("DELETE FROM `tb_admin.financeiro` WHERE cliente_id = $id");
 

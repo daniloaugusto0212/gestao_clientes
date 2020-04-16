@@ -5,6 +5,20 @@
     font-family: "Open Sans";
 }
 
+input[type=number]{
+    margin-top: 8px;
+    
+}
+
+input[type=text],
+input[type=text],
+input[type=text],
+input[type=text],
+textarea{
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
 html,body{
     height: 100%;
     background: rgb(225,225,225);

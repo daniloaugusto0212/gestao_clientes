@@ -60,9 +60,11 @@
         <h2>Gestão de clientes</h2>
         <a <?php selecionadoMenu('cadastrar-clientes'); ?> href="<?php echo INCLUDE_PATH_PAINEL?>cadastrar-clientes">Cadastrar Clientes</a>
         <a <?php selecionadoMenu('gerenciar-clientes'); ?> href="<?php echo INCLUDE_PATH_PAINEL?>gerenciar-clientes">Gerenciar Clientes</a>
-
         <h2>Controle Financeiro</h2>       
         <a <?php selecionadoMenu('visualizar-pagamentos'); ?> href="<?php echo INCLUDE_PATH_PAINEL?>visualizar-pagamentos">Visualizar Pagamentos</a>
+
+        <h2>Controle de Estoque</h2>       
+        <a <?php selecionadoMenu('cadastrar-produtos'); ?> href="<?php echo INCLUDE_PATH_PAINEL?>cadastrar-produtos">Cadastrar Produtos</a>
     </div><!--items-menu-->
     </div><!--menu-wraper-->
 </div><!--menu-->
