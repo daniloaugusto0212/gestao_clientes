@@ -69,9 +69,9 @@
             
         ?>
         <div class="box-single-wraper">
-            <div style="border: 1px solid #ccc;" >
-            <div style="width:30%;float: left;" class="box-imgs">
-                <img src="<?php echo INCLUDE_PATH_PAINEL?>uploads/<?php echo $imagemSingle; ?>" alt="">
+            <div style="border: 1px solid #ccc;padding:8px 15px;" >
+            <div style="width:100%;float: left;" class="box-imgs">
+                <img class="img-square" src="<?php echo INCLUDE_PATH_PAINEL?>uploads/<?php echo $imagemSingle; ?>" alt="">
             </div>
             <div style="width:70%;float: left;border:0;" class="box-single">               
                 <div class="body-box">
@@ -92,7 +92,7 @@
                     </div><!--group-btn-->
                     
                     <div class="group-btn">
-                        <a class="btn delete" item_id="<?php echo $value['id']; ?>"  href="<?php echo INCLUDE_PATH_PAINEL ?>visualizar-produtos?deletar=<?php echo $value['id'] ?>"><i class="fa fa-times"></i> Excluir</a>
+                        <a class="btn delete"  href="<?php echo INCLUDE_PATH_PAINEL ?>visualizar-produtos?deletar=<?php echo $value['id'] ?>"><i class="fa fa-times"></i> Excluir</a>
                         <a class="btn edit" href="<?php echo INCLUDE_PATH_PAINEL ?>editar-produto?id=<?php echo $value['id']; ?>"><i class="fa fa-pen" ></i> Editar</a>
                        
                     </div><!--group-btn-->
@@ -137,22 +137,18 @@
     ?>  
     
     <div class="boxes">        
-        <?php
-            
-            
+        <?php   
             
             foreach ($produtos as $key => $value) {
                 $imagemSingle = MySql::conectar()->prepare("SELECT * FROM `tb_admin.estoque_imagens` WHERE produto_id = $value[id] LIMIT 1");
                 $imagemSingle->execute();
-                $imagemSingle = $imagemSingle->fetch()['imagem'];
-                
-                
+                $imagemSingle = $imagemSingle->fetch()['imagem'];       
             
         ?>
         <div class="box-single-wraper">
-            <div style="border: 1px solid #ccc;" >
-            <div style="width:30%;float: left;" class="box-imgs">
-                <img src="<?php echo INCLUDE_PATH_PAINEL?>uploads/<?php echo $imagemSingle; ?>" alt="">
+            <div style="border: 1px solid #ccc;padding:8px 15px;" >
+            <div style="width:100%;float: left;" class="box-imgs">
+                <img class="img-square" src="<?php echo INCLUDE_PATH_PAINEL?>uploads/<?php echo $imagemSingle; ?>" alt="">
             </div>
             <div style="width:70%;float: left;border:0;" class="box-single">               
                 <div class="body-box">
