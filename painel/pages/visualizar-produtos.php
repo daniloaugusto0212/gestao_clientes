@@ -69,9 +69,19 @@
             
         ?>
         <div class="box-single-wraper">
-            <div style="border: 1px solid #ccc;padding:8px 15px;" >
+            <div style="border: 1px solid #ccc;padding:8px 15px;height:100%" >
             <div style="width:100%;float: left;" class="box-imgs">
+            <?php
+                if ($imagemSingle == '') {
+                 
+                
+            ?>
+             <h1><i class="fas fa-user-tie"></i></h1> 
+            <?php }else{?>
+            
+            
                 <img class="img-square" src="<?php echo INCLUDE_PATH_PAINEL?>uploads/<?php echo $imagemSingle; ?>" alt="">
+            <?php }?>
             </div>
             <div style="width:70%;float: left;border:0;" class="box-single">               
                 <div class="body-box">
@@ -146,9 +156,19 @@
             
         ?>
         <div class="box-single-wraper">
-            <div style="border: 1px solid #ccc;padding:8px 15px;" >
+            <div style="border: 1px solid #ccc;padding:8px 15px;height:100%" >
             <div style="width:100%;float: left;" class="box-imgs">
+            <?php
+                if ($imagemSingle == '') {
+                  
+                
+            ?>
+            <h1><i class="fas fa-user-tie"></i></h1>
+            <?php }else{?>
+            
+            
                 <img class="img-square" src="<?php echo INCLUDE_PATH_PAINEL?>uploads/<?php echo $imagemSingle; ?>" alt="">
+            <?php }?>
             </div>
             <div style="width:70%;float: left;border:0;" class="box-single">               
                 <div class="body-box">

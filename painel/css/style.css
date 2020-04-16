@@ -532,6 +532,16 @@ form .form-group-login:nth-of-type(2){
     overflow-x: auto;
 }
 
+.box-imgs{
+    text-align: center;
+}
+
+.box-imgs h1{
+   color: #ccc;
+   font-size: 70px;
+   margin: 10px 0; 
+}
+
 .box-imgs img{    
     width: 100%;
       
@@ -541,7 +551,7 @@ form .form-group-login:nth-of-type(2){
     width: 200px;
     height: 200px;
     display: block;
-    margin: 0 auto;
+    margin: 8px auto;
 }
 
 .topo-box{
