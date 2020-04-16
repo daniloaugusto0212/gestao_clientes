@@ -252,6 +252,10 @@ div.box-usuario{
     margin-bottom: 25px;
 }
 
+.box-content a{
+    color: black;
+}
+
 .box-content h2{
     font-weight: 300;
     font-size: 23px;
@@ -459,8 +463,13 @@ a.btn.order{background: #04A65A;}
     width: 100%;
     padding: 8px 0;
     text-align: center;
+    margin-bottom: 8px;
 }
 
+.box-alert a{
+    color: #fff;
+    font-weight: bold;
+}
 .sucesso{
     background: #00e676;
     color: white;
@@ -469,6 +478,11 @@ a.btn.order{background: #04A65A;}
 .erro{    
     background: #f75353;
     color: white; 
+}
+
+.atencao{
+    background: #F4B03E;
+    color: #fff;
 }
 
 .menu-active{
@@ -508,7 +522,7 @@ form .form-group-login:nth-of-type(2){
     overflow-x: auto;
 }
 
-.box-imgs img{
+.box-imgs img{    
     width: 100%;
 }
 

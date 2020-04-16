@@ -80,7 +80,7 @@
 
         <div class="form-group">
             <label>Peso do Produto:</label>
-			<input type="number" name="peso" min="0" max="900" value="0">
+			<input type="number" name="peso" min="0" max="50000" value="0">
         </div><!--form-group-->
 
         <div class="form-group">

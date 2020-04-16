@@ -74,6 +74,8 @@
 				echo '<div class="box-alert sucesso"><i class="fa fa-check"></i> '.$mensagem.'</div>';
 			}else if($tipo == 'erro'){
 				echo '<div class="box-alert erro"><i class="fa fa-times"></i> '.$mensagem.'</div>';
+			}elseif ($tipo == 'atencao') {
+				echo '<div class="box-alert atencao"><i class="fas fa-exclamation-triangle"></i> '.$mensagem.'</div>';
 			}
 		}
  
