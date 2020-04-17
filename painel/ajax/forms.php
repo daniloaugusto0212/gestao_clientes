@@ -71,7 +71,7 @@
         }
         if (isset($_FILES['imagem'])) {
             if (Painel::imagemValida($_FILES['imagem'])) {   
-                @unlik('../uploads/'.$imagem);     
+                @unlink('../uploads/'.$imagem);     
                 $imagem = $_FILES['imagem'];
             }else{
                 $data['sucesso'] = false;
