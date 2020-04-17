@@ -62,10 +62,13 @@
         <a <?php selecionadoMenu('gerenciar-clientes'); ?> href="<?php echo INCLUDE_PATH_PAINEL?>gerenciar-clientes">Gerenciar Clientes</a>
         <h2>Controle Financeiro</h2>       
         <a <?php selecionadoMenu('visualizar-pagamentos'); ?> href="<?php echo INCLUDE_PATH_PAINEL?>visualizar-pagamentos">Visualizar Pagamentos</a>
-
         <h2>Controle de Estoque</h2>       
         <a <?php selecionadoMenu('cadastrar-produtos'); ?> href="<?php echo INCLUDE_PATH_PAINEL?>cadastrar-produtos">Cadastrar Produtos</a>
         <a <?php selecionadoMenu('visualizar-produtos'); ?> href="<?php echo INCLUDE_PATH_PAINEL?>visualizar-produtos">Visualizar Produtos</a>
+
+        <h2>Gestão de Imóveis</h2>       
+        <a <?php selecionadoMenu('cadastrar-empreendimento'); ?> href="<?php echo INCLUDE_PATH_PAINEL?>cadastrar-empreendimento">Cadastrar Empreendimento</a>
+        
     </div><!--items-menu-->
     </div><!--menu-wraper-->
 </div><!--menu-->
@@ -94,7 +97,8 @@
 <!--Link para mascara de calendario. Usa-se juntamente com o link de estilo no inicio do código-->
 <script  src="https://cdn.jsdelivr.net/npm/zebra_datepicker@latest/dist/zebra_datepicker.min.js"></script>
 <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/jquery.mask.js"></script>
-<script src="<?php echo INCLUDE_PATH_PAINEL ?>js/jquery.ajaxform.js"></script> 
+<script src="<?php echo INCLUDE_PATH_PAINEL ?>js/jquery.ajaxform.js"></script>
+<script src="<?php echo INCLUDE_PATH_PAINEL ?>js/jquery.maskMoney.js"></script> 
 <script src="<?php echo INCLUDE_PATH ?>js/constants.js"></script> 
 <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/main.js"></script>
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js" referrerpolicy="origin"></script>
@@ -107,8 +111,7 @@
     <?php Painel::loadJS(array('ajax.js'),'gerenciar-clientes'); ?>
     <?php Painel::loadJS(array('ajax.js'),'cadastrar-clientes'); ?>
     <?php Painel::loadJS(array('ajax.js'),'editar-cliente'); ?>
-    <?php Painel::loadJS(array('controleFinanceiro.js'),'editar-cliente'); ?>
-    <?php Painel::loadJS(array('jquery.maskMoney.js'),'editar-cliente'); ?>
+    <?php Painel::loadJS(array('controleFinanceiro.js'),'editar-cliente'); ?>    
 </body>
 </html>
 

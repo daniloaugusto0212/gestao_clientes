@@ -22,7 +22,7 @@
     define('HOST','localhost');
     define('USER','root');
     define('PASSWORD','');
-    define('DATABASE','Projeto_01');
+    define('DATABASE','sistema');
 
     
 
