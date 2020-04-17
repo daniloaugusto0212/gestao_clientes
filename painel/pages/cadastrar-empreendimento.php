@@ -2,9 +2,36 @@
     <h2><i class="fa fa-pencil"></i> Cadastrar Empreeendimento</h2>
 
     <form method="post" enctype="multipart/form-data">
+
+    <?php
+        if (isset($_POST['acao'])) {
+
+            $nome = $_POST['nome'];
+            $tipo = $_POST['tipo'];
+            $preco = $_POST['preco'];
+            $imagem = $_FILES['imagem'];
+
+            if ($_FILES['imagem']['name'] == '') {
+                Painel::alert('erro', 'Você precisa selecionar uma imagem.');
+            }else{
+                //Imagem é válida?
+                if (Painel::imagemValida($imagem) == false) {
+                    Painel::alert('erro', 'Imagem inválida!');
+                }else{
+                    //Realizar upload
+                    $idImagem = Painel::uploadFile($imagem);
+                    $sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.empreendimentos` VALUES (null,?,?,?,?)");
+                    $sql->execute(array($nome,$tipo,$preco,$idImagem));
+                    Painel::alert('sucesso', 'Cadastro do empreendimento foi efetuado com sucesso!');
+                }
+            }
+           
+        }
+
+    ?>
         <div class="form-group">
             <label>Nome: </label>
-            <input type="text" name="nome">
+            <input required type="text" name="nome">
         </div><!--form-group-->
 
         <div class="form-group">
@@ -17,12 +44,12 @@
 
         <div class="form-group">
             <label>Preço: </label>
-            <input type="text" name="preco">
+            <input required type="text" name="preco">
         </div><!--form-group-->
 
         <div class="form-group">
-            <label>Preço: </label>
-            <input type="file" name="imagem">
+            <label>Imagem: </label>
+            <input required type="file" name="imagem">
         </div><!--form-group-->
 
         <div class="form-group">           
