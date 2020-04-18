@@ -20,8 +20,10 @@
                 }else{
                     //Realizar upload
                     $idImagem = Painel::uploadFile($imagem);
-                    $sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.empreendimentos` VALUES (null,?,?,?,?)");
-                    $sql->execute(array($nome,$tipo,$preco,$idImagem));
+                    $sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.empreendimentos` VALUES (null,?,?,?,?,?)");
+                    $sql->execute(array($nome,$tipo,$preco,$idImagem,0));
+                    $lastId = MySql::conectar()->lastInsertId();
+                    MySql::conectar()->exec("UPDATE `tb_admin.empreendimentos` SET order_id = $lastId WHERE id = $lastId");
                     Painel::alert('sucesso', 'Cadastro do empreendimento foi efetuado com sucesso!');
                 }
             }
@@ -44,7 +46,7 @@
 
         <div class="form-group">
             <label>Preço: </label>
-            <input required type="text" name="preco">
+            <input  type="text" name="preco">
         </div><!--form-group-->
 
         <div class="form-group">

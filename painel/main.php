@@ -13,6 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700&display=swap" rel="stylesheet">    
     <link rel="stylesheet" href="<?php echo INCLUDE_PATH_PAINEL ?>css/style.css">
+    <link rel="stylesheet" href="<?php echo INCLUDE_PATH_PAINEL ?>css/jquery-ui.min.css">
     <!--Link para mascara de calendario. Usa-se juntamente com o script no final da código-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/zebra_datepicker@latest/dist/css/default/zebra_datepicker.min.css">
 </head>
@@ -68,6 +69,7 @@
 
         <h2>Gestão de Imóveis</h2>       
         <a <?php selecionadoMenu('cadastrar-empreendimento'); ?> href="<?php echo INCLUDE_PATH_PAINEL?>cadastrar-empreendimento">Cadastrar Empreendimento</a>
+        <a <?php selecionadoMenu('listar-empreendimentos'); ?> href="<?php echo INCLUDE_PATH_PAINEL?>listar-empreendimentos">Listar Empreendimentos</a>
         
     </div><!--items-menu-->
     </div><!--menu-wraper-->
@@ -97,6 +99,7 @@
 <!--Link para mascara de calendario. Usa-se juntamente com o link de estilo no inicio do código-->
 <script  src="https://cdn.jsdelivr.net/npm/zebra_datepicker@latest/dist/zebra_datepicker.min.js"></script>
 <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/jquery.mask.js"></script>
+<?php Painel::loadJS(array('jquery-ui.min.js'),'listar-empreendimentos'); ?>
 <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/jquery.ajaxform.js"></script>
 <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/jquery.maskMoney.js"></script> 
 <script src="<?php echo INCLUDE_PATH ?>js/constants.js"></script> 
@@ -112,6 +115,7 @@
     <?php Painel::loadJS(array('ajax.js'),'cadastrar-clientes'); ?>
     <?php Painel::loadJS(array('ajax.js'),'editar-cliente'); ?>
     <?php Painel::loadJS(array('controleFinanceiro.js'),'editar-cliente'); ?>    
+    <?php Painel::loadJS(array('empreendimentos.js'),'listar-empreendimentos'); ?>
 </body>
 </html>
 

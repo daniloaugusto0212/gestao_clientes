@@ -1,0 +1,4 @@
+
+    $(function(){
+        $( ".boxes" ).sortable();
+    });
