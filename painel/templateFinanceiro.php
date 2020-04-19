@@ -43,6 +43,7 @@ include('../includeConstants.php');
 			<td style="font-weight: bold;">Cliente</td>
 			<td style="font-weight: bold;">Valor</td>
 			<td style="font-weight: bold;">Vencimento</td>
+			<td style="font-weight: bold;">Pago</td>
 		</tr>
 
 		<?php
@@ -64,6 +65,7 @@ include('../includeConstants.php');
 			<td><?php echo $clienteNome; ?></td>
 			<td><?php echo $value['valor']; ?></td>
 			<td><?php echo date('d/m/Y',strtotime($value['vencimento'])); ?></td>
+			<td><?php echo date('d/m/Y',strtotime($value['pago'])); ?></td>
 		</tr>
 
 		<?php } ?>

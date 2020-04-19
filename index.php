@@ -42,7 +42,7 @@
     </div> <!--overlay-loading-->              
     <header>
         <div class="center">            
-            <div class="logo left"><a href="/" ><img src="images/logo_sitedan.png" width="150px%" alt=""></a></div><!--logo-->
+            <div class="logo left"><a href="<?php echo INCLUDE_PATH; ?>" >LOGOMARCA</a></div><!--logo-->
             <nav class="desktop right">
                 <ul>
                 <li><a title="Home" href="<?php echo INCLUDE_PATH; ?>">Home</a></li>

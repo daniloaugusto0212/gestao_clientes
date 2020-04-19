@@ -10,7 +10,7 @@
 	$pegarVisitasHoje->execute(array(date('Y-m-d')));
 
 	$pegarVisitasHoje = $pegarVisitasHoje->rowCount();
-
+	
 
 ?>
 <div class="box-content w100">

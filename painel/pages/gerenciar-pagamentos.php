@@ -1,4 +1,18 @@
+<?php
+    if (isset($_GET['id'])) {
+        $id = (int)$_GET['id'];
+        $cliente = Painel::select('tb_admin.clientes','id = ?',array($id));    
+    }else{
+        Painel::alert('erro','Você precisa passar o parametro ID.');
+        die();
+    }
+
+    $clienteNome = MySql::conectar()->prepare("SELECT `nome` FROM `tb_admin.clientes` WHERE id = $id ");
+    $clienteNome->execute();
+    $clienteNome =$clienteNome->fetch()['nome'];
+?>
 <div class="box-content">
+<h2><i class="fas fa-user-edit"></i>Pagamentos de <b><?php echo $clienteNome; ?></b> </h2><br>
 <?php
     if (isset($_GET['email'])) {
         //Queremos enviar um e-amil avisando o atraso
@@ -34,23 +48,21 @@
     }
 ?>  
 
-    <h2><i class="fas fa-money-check-alt"></i> Pagamentos Pendentes</h2>
-    <div class="gerar-pdf">
-        <a target="_blank" href="<?php echo INCLUDE_PATH_PAINEL ?>gerar-pdf.php?pagamento=pendentes">Gerar PDF</a>
-    </div>
+   
+<h2><i class="fas fa-money-check-alt"></i> Pendentes</h2>
     <div class="wraper-table">
         <table>
             <tr>
                 <td>Nome do pagamento</td>               
                 <td>Cliente</td>
                 <td>Valor</td>
-                <td>Vencimento</td> 
-                <td>Enviar e-mail</td>   
-                <td>Marcar Pago</td>           
+                <td>Vencimento</td>
+                <td>Enviar e-mail</td>
+                <td>Marcar Pago</td>
             </tr>
 
             <?php
-                $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.financeiro` WHERE status = 0 ORDER BY vencimento ASC");
+                $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.financeiro` WHERE status = 0 AND cliente_id = $id ORDER BY vencimento ASC");
                 $sql->execute();
                 $pendentes = $sql->fetchAll();
 
@@ -65,13 +77,13 @@
                         $style = 'style="background:#ff7070;font-weight:bold;"';
                     }
                     ?>
-                 <tr <?php echo $style; ?> >
+                <tr <?php echo $style; ?> >
                     <td> <?php echo $value['nome'];?> </td>
                     <td> <?php echo $clienteNome;?> </td>
                     <td><?php echo $value['valor'];?></td>
                     <td><?php echo date('d/m/Y',strtotime($value['vencimento']));?></td>
-                    <td><a class="btn edit" href="<?php echo INCLUDE_PATH_PAINEL ?>visualizar-pagamentos?email=<?php echo $info['id'];?>&parcela=<?php echo $value['id']; ?>"><i class="fa fa-envelope" ></i> Email</a></td>
-                    <td><a style="background:#00bfa5;" class="btn"  href="<?php echo INCLUDE_PATH_PAINEL ?>visualizar-pagamentos&pago=<?php echo $value['id'];?>"><i class="fa fa-check"></i> Pago</a></td>
+                    <td><a class="btn edit" href="<?php echo INCLUDE_PATH_PAINEL ?>gerenciar-pagamentos?id=<?php echo $value['id'] ?>&email=<?php echo $info['id'];?>&parcela=<?php echo $value['id']; ?>"><i class="fa fa-envelope" ></i> Email</a></td>
+                    <td><a style="background:#00bfa5;" class="btn"  href="<?php echo INCLUDE_PATH_PAINEL ?>gerenciar-pagamentos?id=<?php echo $idCliente ?>&pago=<?php echo $value['id'];?>"><i class="fa fa-check"></i> Pago</a></td>
                     
                 </tr>
                 <?php } ?>
@@ -79,27 +91,25 @@
 
             
         </table>
-    </div><!--wraper-table-->   
-
-
-    <h2><i class="fas fa-money-check-alt"></i> Pagamentos Concluídos</h2>
-    <div class="gerar-pdf">
-        <a target="_blank" href="<?php echo INCLUDE_PATH_PAINEL ?>gerar-pdf.php?pagamento=concluidos">Gerar PDF</a>
-    </div>
+    </div><!--wraper-table-->
     
+
+    <h2><i class="fas fa-money-check-alt"></i> Concluídos</h2>
     <div class="wraper-table">
         <table>
             <tr>
-                <td>Nome do pagamento</td>               
+                <td>Nome do pagamento</td>
+               
                 <td>Cliente</td>
                 <td>Valor</td>
                 <td>Vencimento</td>
-                <td>Pago</td>                
+                <td>Pago</td>
+                
                 
             </tr>
 
             <?php
-                $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.financeiro` WHERE status = 1 ORDER BY vencimento ASC");
+                $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.financeiro` WHERE status = 1 AND cliente_id = $id ORDER BY vencimento ASC");
                 $sql->execute();
                 $pendentes = $sql->fetchAll();
 
@@ -114,10 +124,14 @@
                     <td> <?php echo $clienteNome;?> </td>
                     <td><?php echo $value['valor'];?></td>
                     <td><?php echo date('d/m/Y',strtotime($value['vencimento']));?></td>
-                    <td><?php echo date('d/m/Y',strtotime($value['pago']));?></td> 
+                    <td><?php echo date('d/m/Y',strtotime($value['pago']));?></td>
+                                   
+                    
                 </tr>
-                <?php } ?>           
-        </table>
-    </div><!--wraper-table-->      
+                <?php } ?>
+            
 
-</div><!--box-content-->
+            
+        </table>
+    </div><!--wraper-table-->
+    </div><!--box-content-->

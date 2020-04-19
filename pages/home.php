@@ -1,3 +1,4 @@
+
 <section class="banner-container">
     <div style="background-image: url('<?php echo INCLUDE_PATH; ?>images/bg-form.jpg');" class="banner-single"></div><!--banner-single-->
     <div style="background-image: url('<?php echo INCLUDE_PATH; ?>images/bg-form2.jpg');" class="banner-single"></div><!--banner-single-->
@@ -71,7 +72,7 @@
             <div class="servicos">
             <ul>
                 <?php 
-                    $sql = MySql::conectar()->prepare("SELECT * FROM `tb_site.servicos` ORDER BY order_id ASC LIMIT 3");
+                    $sql = MySql::conectar()->prepare("SELECT * FROM `tb_site.servicos` ORDER BY order_id ASC LIMIT 6");
                     $sql->execute();
                     $servicos = $sql->fetchAll();
                     foreach($servicos as $key => $value){

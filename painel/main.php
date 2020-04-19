@@ -113,8 +113,10 @@
     <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/helperMask.js" ></script>    
     <?php Painel::loadJS(array('ajax.js'),'gerenciar-clientes'); ?>
     <?php Painel::loadJS(array('ajax.js'),'cadastrar-clientes'); ?>
+    <?php Painel::loadJS(array('ajax.js'),'gerenciar-pagamentos'); ?>
     <?php Painel::loadJS(array('ajax.js'),'editar-cliente'); ?>
-    <?php Painel::loadJS(array('controleFinanceiro.js'),'editar-cliente'); ?>    
+    <?php Painel::loadJS(array('controleFinanceiro.js'),'editar-cliente'); ?> 
+    <?php Painel::loadJS(array('controleFinanceiro.js'),'gerenciar-pagamentos'); ?>   
     <?php Painel::loadJS(array('empreendimentos.js'),'listar-empreendimentos'); ?>
 </body>
 </html>
