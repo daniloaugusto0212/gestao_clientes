@@ -91,7 +91,12 @@
 </header>
 <div class="content">
 
-    <?php Painel::carregarPagina(); ?>
+    <?php 
+
+    Painel::carregarPagina();
+    
+
+    ?>
 
     
 </div><!--content-->

@@ -100,10 +100,15 @@
         echo "chamando";
         MySql::conectar()->exec("DELETE FROM `tb_admin.clientes` WHERE id = $id");
         MySql::conectar()->exec("DELETE FROM `tb_admin.financeiro` WHERE cliente_id = $id");
-
-
-    }    
-
+    }elseif (isset($_POST['tipo_acao'])  && $_POST['tipo_acao'] == 'ordenar_empreendimentos') {
+        $ids = $_POST['item'];
+        $i = 1;
+        foreach ($ids as $key => $value) {
+            MySql::conectar()->exec("UPDATE `tb_admin.empreendimentos` SET order_id = $i WHERE id = $value");
+            $i++;
+        }
+    }
+    
 
     die(json_encode($data));
 

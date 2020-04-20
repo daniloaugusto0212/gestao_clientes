@@ -36,7 +36,7 @@
             }else{
                 $query2 = "";
             }
-            $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.empreendimentos` $query $query2");
+            $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.empreendimentos` $query ORDER BY order_id ASC");
             $sql->execute();
             $produtos = $sql->fetchAll();
             if ($query != '') {
@@ -45,7 +45,7 @@
             foreach ($produtos as $key => $value) {     
             
         ?>
-        <div class="box-single-wraper" >
+        <div id="item-<?php echo $value['id']; ?>" class="box-single-wraper" style="padding: 10px 20px;">
             <div style="border: 1px solid #ccc;padding:8px 15px;height:100%" >
             <div style="width:100%;float: left;" class="box-imgs"> 
             <img class="img-square" src="<?php echo INCLUDE_PATH_PAINEL?>uploads/<?php echo $value['imagem']; ?>">
@@ -56,6 +56,7 @@
                     <p><?php echo ucfirst($value['tipo']); ?> </p>
                     <div class="group-btn">
                         <a class="btn delete"  href="<?php echo INCLUDE_PATH_PAINEL ?>listar-empreendimentos?deletar=<?php echo $value['id'] ?>"><i class="fa fa-times"></i> Excluir</a>
+                        <a style="background:#04A65A;" class="btn"  href="<?php echo INCLUDE_PATH_PAINEL ?>visualizar-empreendimento?id=<?php echo $value['id'] ?>"><i class="fa fa-eye"></i> Visualizar</a>
                         
                     </div><!--group-btn-->
                 </div><!--body-box-->

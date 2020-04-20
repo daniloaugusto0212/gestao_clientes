@@ -532,53 +532,52 @@ form .form-group-login:nth-of-type(2){
     overflow-x: auto;
 }
 
-.box-imgs{
-    text-align: center;
-}
-
-.box-imgs h1{
-   color: #ccc;
-   font-size: 70px;
-   margin: 10px 0; 
-}
-
-.box-imgs img{    
-    width: 100%;
-      
+.box-imgs img{
+	width: 100%;
 }
 
 .box-imgs img.img-square{
-    width: 200px;
-    height: 200px;
-    display: block;
-    margin: 8px auto;
+	width: 200px;
+	height: 200px;
+	display: block;
+	margin:8px auto;
+}
+
+.box-imgs{
+	text-align: center;
+}
+
+.box-imgs h1{
+	color: #ccc;
+	font-size: 70px;
+	margin:10px 0;
 }
 
 .topo-box{
-    text-align: center;
-    color: #ccc;
-    padding: 8px 0;
-    border-bottom: 1px solid #ccc;
-}
-
-.topo-box h2{
-    font-size: 36px;
+	text-align: center;
+	color: #ccc;
+	padding:8px 0;
+	border-bottom: 1px solid #ccc;
 }
 
 .topo-box img{
-    display: block;
-    max-width: 150px;
-    max-height: 70px;
-    margin: 0 auto;
+	display: block;
+	max-width: 150px;
+	margin:0 auto;
 }
+
+.topo-box h2{
+	font-size: 36px;
+}
+
 .body-box{
-    padding: 10px;
+	padding:10px;
 }
 
 .body-box p{
-    color: #646464;
-    font-size: 15px;
-    margin-bottom: 8px;
+	color: #646464;
+	font-size: 15px;
+	margin-bottom: 8px;
 }
 
 .group-btn{margin-top: 15px;}

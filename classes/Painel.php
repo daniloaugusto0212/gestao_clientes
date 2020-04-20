@@ -50,6 +50,12 @@
 					include('pages/'.$url[0].'.php');
 				}else{
 					//Página não existe!
+					Router::get('visualizar-empreendimento/?',function($par){
+						include('views/visualizar-empreendimento.php');
+					});
+					Router::post('visualizar-empreendimento/?',function($par){
+						include('views/visualizar-empreendimento-post.php');
+					});
 					header('Location: '.INCLUDE_PATH_PAINEL);
 				}
 			}else{

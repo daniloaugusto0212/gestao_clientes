@@ -1,11 +1,11 @@
 /**
  * jquery.mask.js
- * @version: v1.14.16
+ * @version: v1.14.11
  * @author: Igor Escobar
  *
- * Created by Igor Escobar on 2012-03-10. Please report any bug at github.com/igorescobar/jQuery-Mask-Plugin
+ * Created by Igor Escobar on 2012-03-10. Please report any bug at http://blog.igorescobar.com
  *
- * Copyright (c) 2012 Igor Escobar http://igorescobar.com
+ * Copyright (c) 2012 Igor Escobar http://blog.igorescobar.com
  *
  * The MIT License (http://www.opensource.org/licenses/mit-license.php)
  *
@@ -35,20 +35,21 @@
 /* jshint maxcomplexity:17 */
 /* global define */
 
+'use strict';
+
 // UMD (Universal Module Definition) patterns for JavaScript modules that work everywhere.
-// https://github.com/umdjs/umd/blob/master/templates/jqueryPlugin.js
+// https://github.com/umdjs/umd/blob/master/jqueryPluginCommonjs.js
 (function (factory, jQuery, Zepto) {
 
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], factory);
-    } else if (typeof exports === 'object' && typeof Meteor === 'undefined') {
+    } else if (typeof exports === 'object') {
         module.exports = factory(require('jquery'));
     } else {
         factory(jQuery || Zepto);
     }
 
 }(function ($) {
-    'use strict';
 
     var Mask = function (el, mask, options) {
 
@@ -187,8 +188,9 @@
 
                 return r;
             },
-            calculateCaretPosition: function(oldVal) {
-                var newVal = p.getMasked(),
+            calculateCaretPosition: function() {
+                var oldVal = el.data('mask-previus-value') || '',
+                    newVal = p.getMasked(),
                     caretPosNew = p.getCaret();
                 if (oldVal !== newVal) {
                     var caretPosOld = el.data('mask-previus-caret-pos') || 0,
@@ -226,10 +228,11 @@
                         }
                     }
 
-                    // if the cursor is at the end keep it there
                     if (caretPosNew > oldValL) {
-                      caretPosNew = newValL * 10;
-                    } else if (caretPosOld >= caretPosNew && caretPosOld !== oldValL) {
+                      // if the cursor is at the end keep it there
+                      caretPosNew = newValL;
+                    }
+                    else if (caretPosOld >= caretPosNew && caretPosOld !== oldValL) {
                         if (!p.maskDigitPosMapOld[caretPosNew])  {
                           var caretPos = caretPosNew;
                           caretPosNew -= maskDigitsBeforeCaretAllOld - maskDigitsBeforeCaretAll;
@@ -253,15 +256,12 @@
                 var keyCode = el.data('mask-keycode');
 
                 if ($.inArray(keyCode, jMask.byPassKeys) === -1) {
-                    var newVal = p.getMasked(),
-                        caretPos = p.getCaret(),
-                        oldVal = el.data('mask-previus-value') || '';
+                    var newVal   = p.getMasked(),
+                        caretPos = p.getCaret();
 
-                    // this is a compensation to devices/browsers that don't compensate
-                    // caret positioning the right way
                     setTimeout(function() {
-                      p.setCaret(p.calculateCaretPosition(oldVal));
-                    }, $.jMaskGlobals.keyStrokeCompensation);
+                      p.setCaret(p.calculateCaretPosition());
+                    }, 10);
 
                     p.val(newVal);
                     p.setCaret(caretPos);
@@ -308,7 +308,7 @@
                              if (translation.recursive) {
                                 if (resetPos === -1) {
                                     resetPos = m;
-                                } else if (m === lastMaskChar && m !== resetPos) {
+                                } else if (m === lastMaskChar) {
                                     m = resetPos - offset;
                                 }
 
@@ -395,12 +395,6 @@
         jMask.options = options;
         jMask.remove = function() {
             var caret = p.getCaret();
-            if (jMask.options.placeholder) {
-                el.removeAttr('placeholder');
-            }
-            if (el.data('mask-maxlength')) {
-                el.removeAttr('maxlength');
-            }
             p.destroyEvents();
             p.val(jMask.getCleanVal());
             p.setCaret(caret);
@@ -455,7 +449,7 @@
                 }
 
                 if (maxlength) {
-                    el.attr('maxlength', mask.length).data('mask-maxlength', true);
+                    el.attr('maxlength', mask.length);
                 }
 
                 p.destroyEvents();
@@ -574,7 +568,6 @@
         dataMask: true,
         watchInterval: 300,
         watchInputs: true,
-        keyStrokeCompensation: 10,
         // old versions of chrome dont work great with input event
         useInput: !/Chrome\/[2-4][0-9]|SamsungBrowser/.test(window.navigator.userAgent) && eventSupported('input'),
         watchDataMask: false,
