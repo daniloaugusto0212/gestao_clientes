@@ -627,6 +627,28 @@ form .form-group-login:nth-of-type(2){
     text-decoration: none;
 }
 
+.row1{
+    float: left;
+    width: 30%;
+    padding: 8px 10px;
+}
+
+.row1 img{
+    width: 100%;
+}
+
+.row2{
+    float: left;
+    width: 70%;
+    padding: 8px 10px;
+}
+
+.row2 p{
+    padding: 8px 0;
+    color: #646464;
+    border-bottom: 1px solid #ccc;
+}
+
 @media screen and (max-width:1024px){
     .box-single-wraper{
         width: 100%;

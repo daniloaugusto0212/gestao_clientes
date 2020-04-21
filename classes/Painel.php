@@ -49,14 +49,15 @@
 				if(file_exists('pages/'.$url[0].'.php')){
 					include('pages/'.$url[0].'.php');
 				}else{
-					//Página não existe!
+					//Sistema de rotas
 					Router::get('visualizar-empreendimento/?',function($par){
 						include('views/visualizar-empreendimento.php');
 					});
 					Router::post('visualizar-empreendimento/?',function($par){
-						include('views/visualizar-empreendimento-post.php');
+						include('views/visualizar-empreendimento.php');
 					});
-					header('Location: '.INCLUDE_PATH_PAINEL);
+					//Página não existe!
+					//header('Location: '.INCLUDE_PATH_PAINEL);
 				}
 			}else{
 				include('pages/home.php');

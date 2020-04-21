@@ -56,7 +56,7 @@
                     <p><?php echo ucfirst($value['tipo']); ?> </p>
                     <div class="group-btn">
                         <a class="btn delete"  href="<?php echo INCLUDE_PATH_PAINEL ?>listar-empreendimentos?deletar=<?php echo $value['id'] ?>"><i class="fa fa-times"></i> Excluir</a>
-                        <a style="background:#04A65A;" class="btn"  href="<?php echo INCLUDE_PATH_PAINEL ?>visualizar-empreendimento?id=<?php echo $value['id'] ?>"><i class="fa fa-eye"></i> Visualizar</a>
+                        <a style="background:#04A65A;" class="btn"  href="<?php echo INCLUDE_PATH_PAINEL ?>visualizar-empreendimento/<?php echo $value['id'] ?>"><i class="fa fa-eye"></i> Visualizar</a>
                         
                     </div><!--group-btn-->
                 </div><!--body-box-->

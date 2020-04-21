@@ -26,7 +26,7 @@
 
                 if ($ok) {
                     $arg($par);
-                    die();
+                    return;
                 }
             }
         }
@@ -56,7 +56,7 @@
 
                 if ($ok) {
                     $arg($par);
-                    die();
+                    return;
                 }
             }
         }
