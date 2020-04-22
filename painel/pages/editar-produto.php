@@ -26,7 +26,7 @@
 <div class="box-content">
     <h2><i class="fas fa-user-edit"></i> Editando Produto: <?php echo $id;?> </h2>    
     <div class="card-title"><i class="fas fa-info-circle"></i> Informações do produto:</div>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" action="<?php echo INCLUDE_PATH_PAINEL ?>editar-produto?id=<?php echo $id; ?>"  enctype="multipart/form-data">
     <?php
         if (isset($_POST['acao'])) {
             $nome = $_POST['nome'];

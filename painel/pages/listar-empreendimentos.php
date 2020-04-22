@@ -10,16 +10,29 @@
     </div><!--busca-->
     <?php 
 
-    if (isset($_GET['deletar'])) {
-        //Deletar o produto
-        $id = (int)$_GET['deletar'];
-        $imagens = MySql::conectar()->prepare("SELECT `imagem` FROM `tb_admin.empreendimentos` WHERE id = $id" );
-        $imagens->execute();
-        $imagens = $imagens->fetch();       
-        @unlink(BASE_DIR_PAINEL.'/uploads/'.$imagens['imagem']);
-             
-        MySql::conectar()->exec("DELETE FROM `tb_admin.empreendimentos` WHERE id = $id");
-        Painel::alert('sucesso', 'O empreendimento foi deletado com sucesso!');
+if(isset($_GET['deletar'])){
+	//queremos deletar algum produto.
+	$id = (int)$_GET['deletar'];
+	$imagens = MySql::conectar()->prepare("SELECT `imagem` FROM `tb_admin.empreendimentos` WHERE id = $id");
+	$imagens->execute();
+	$imagens = $imagens->fetch();
+	@unlink(BASE_DIR_PAINEL.'/uploads/'.$imagens['imagem']);
+
+	$imoveis = MySql::conectar()->prepare("SELECT * FROM `tb_admin.imoveis` WHERE empreend_id = $id");
+	$imoveis->execute();
+	$imoveis = $imoveis->fetchAll();
+	foreach ($imoveis as $key => $value) {
+		$imagens = MySql::conectar()->prepare("SELECT * FROM `tb_admin.imagens_imoveis` WHERE imovel_id = $value[id]");
+		$imagens->execute();
+		$imagens = $imagens->fetchAll();
+		foreach ($imagens as $key2 => $value2) {
+			@unlink(BASE_DIR_PAINEL.'/uploads/'.$value2['imagem']);
+			MySql::conectar()->exec("DELETE FROM `tb_admin.imagens_imoveis` WHERE id = $value2[id]");
+		}
+	}
+	MySql::conectar()->exec("DELETE FROM `tb_admin.imoveis` WHERE empreend_id = $id");
+	MySql::conectar()->exec("DELETE FROM `tb_admin.empreendimentos` WHERE id = $id");
+	Painel::alert('sucesso',"O empreendimento foi deletado com sucesso!");
     }
         
     ?>  
