@@ -1,3 +1,7 @@
+<?php
+    $parametros = \views\mainView::$par;
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,18 +9,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Imobiliário</title>
     <link rel="stylesheet" href="<?php echo INCLUDE_PATH ?>estilo/style.css">
+    <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>estilo/css/all.css">  <!--load all styles fontawesomne-->
+    
 </head>
 <body>
 <base base="<?php echo INCLUDE_PATH; ?>"/>
 
 <header>
     <div class="container">
-        <div class="logo">Portal Imobiliário</div>
-        <nav class="desktop">
+        <div class="logo"><a style="color:inherit;" href="<?php echo INCLUDE_PATH ?>"> Portal Imobiliário</a></div>
+        <nav class="desktop">      
             <ul>
-                <li><a href=""> Centro Empresarial 1</a></li>
-                <li><a href=""> Centro Empresarial 2</a></li>
-                <li><a href=""> Centro Empresarial 3</a></li>
+            <?php
+                $selectEmpreend = \MySql::conectar()->prepare("SELECT * FROM `tb_admin.empreendimentos` ORDER BY order_id ASC");
+                $selectEmpreend->execute();
+                $empreendimentos = $selectEmpreend->fetchAll();
+                foreach ($empreendimentos as $key => $value) {                    
+            ?>
+                <li><a href=" <?php echo INCLUDE_PATH.$value['slug']; ?> "> <?php echo $value['nome']; ?></a></li>
+            <?php } ?>
             </ul>
         </nav>
         <div class="clear"></div>
@@ -52,7 +63,13 @@
                 <label>Preço máximo: </label>
                 <input type="text" name="preco_max">
             </div><!--form-group-->
+            <?php 
+                if(isset($parametros['slug_empreendimento'])){
+                    echo '<input type="hidden" name"slug_empreendimento" value"'.$parametros['slug_empreendimento'].'"">';
+                }
+            ?>
         </form>
+        <div class="clear"></div>
     </div><!--container-->
 </section>
     
