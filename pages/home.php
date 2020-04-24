@@ -1,1 +1,4 @@
-<h1>Estou na home</h1>
+<div class="container">
+    <h1>Home</h1>
+
+</div><!--container-->

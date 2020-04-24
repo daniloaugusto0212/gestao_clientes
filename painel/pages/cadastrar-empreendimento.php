@@ -20,8 +20,9 @@
                 }else{
                     //Realizar upload
                     $idImagem = Painel::uploadFile($imagem);
-                    $sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.empreendimentos` VALUES (null,?,?,?,?,?)");
-                    $sql->execute(array($nome,$tipo,$preco,$idImagem,0));
+                    $slug = Painel::generateSlug($nome);
+                    $sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.empreendimentos` VALUES (null,?,?,?,?,?,?)");
+                    $sql->execute(array($nome,$tipo,$preco,$idImagem,$slug,0));
                     $lastId = MySql::conectar()->lastInsertId();
                     MySql::conectar()->exec("UPDATE `tb_admin.empreendimentos` SET order_id = $lastId WHERE id = $lastId");
                     Painel::alert('sucesso', 'Cadastro do empreendimento foi efetuado com sucesso!');

@@ -1,2 +1,1 @@
-<?php echo views\mainView::$par[0]; ?>
-<br/>
+<?php echo views\mainView::$par[1]; ?>
