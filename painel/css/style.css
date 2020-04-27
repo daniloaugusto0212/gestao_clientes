@@ -657,6 +657,31 @@ form .form-group-login:nth-of-type(2){
     border-bottom: 1px solid #ccc;
 }
 
+/*Chat Online do painel*/
+
+.box-chat-online{
+    margin: 20px 0;
+    height: 300px;
+    overflow-y: scroll;
+    padding: 10px 10px;
+}
+
+.mensagem-chat{
+    padding: 8px 0;
+    border-bottom: 1px dotted rgb(210,210,210);
+}
+
+.mensagem-chat span{
+    background: #309CC7;
+    padding: 0 4px;
+    border-radius: 10px;
+}
+
+.mensagem-chat p{
+    font-size: 15px;
+    color: #646464;
+}
+
 @media screen and (max-width:1024px){
     .box-single-wraper{
         width: 100%;

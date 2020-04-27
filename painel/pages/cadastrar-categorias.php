@@ -1,6 +1,5 @@
-
 <div class="box-content">
-    <h2><i class="fas fa-user-plus"></i> Cadastrar Categoria</h2>
+    <h2><i class="far fa-comments"></i> Cadastrar Categoria</h2>
 
     <form  method="post" enctype="multipart/form-data"> <!--enctype="multipart/form-data" para funcionar o upload de imagens-->
 
