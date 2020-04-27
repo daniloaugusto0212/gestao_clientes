@@ -1,15 +1,29 @@
-
 <div class="box-content">
     <h2><i class="far fa-comments"></i> Chat Online</h2>
     <div class="box-chat-online">
-    <?php for ($i=0; $i < 30; $i++) { 
+    
+    <?php 
+        $mensagens = MySql::conectar()->prepare("SELECT * FROM `tb_admin.chat` ORDER BY id DESC LIMIT 10");
+        $mensagens->execute();
+        $mensagens = $mensagens->fetchAll();
+        $mensagens = array_reverse($mensagens);
         
+        foreach ($mensagens as $key => $value) {
+            $nomeUsuario = MySql::conectar()->prepare("SELECT `nome` FROM `tb_admin.usuarios` WHERE id = $value[user_id]");
+            $nomeUsuario->execute();
+            $nomeUsuario = $nomeUsuario->fetch()['nome'];
+            $lastId = $value['id'];
+
+              
      ?>
         <div class="mensagem-chat">
-            <span>Danilo Augusto</span>
-            <p>Olá pessoal, tudo bem?</p>
+            <span><?php echo $nomeUsuario ?></span>
+            <p><?php echo $value['mensagem'] ?></p>
         </div><!--mensagem-chat-->
-    <?php }?>
+    <?php 
+        $_SESSION['lastIdChat'] = $lastId;
+    }?>
+    
     </div><!--box-chat-online-->
     <form action="<?php echo INCLUDE_PATH_PAINEL ?>ajax/chat.php" method="post">
         <textarea name="mensagem"></textarea>
