@@ -124,6 +124,7 @@
     <?php Painel::loadJS(array('controleFinanceiro.js'),'editar-cliente'); ?> 
     <?php Painel::loadJS(array('controleFinanceiro.js'),'gerenciar-pagamentos'); ?>   
     <?php Painel::loadJS(array('empreendimentos.js'),'listar-empreendimentos'); ?>
+    <?php Painel::loadJS(array('chat.js'),'chat'); ?>
 </body>
 </html>
 

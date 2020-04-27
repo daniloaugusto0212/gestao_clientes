@@ -11,8 +11,8 @@
         </div><!--mensagem-chat-->
     <?php }?>
     </div><!--box-chat-online-->
-    <form action="" method="post">
-        <textarea></textarea>
+    <form action="<?php echo INCLUDE_PATH_PAINEL ?>ajax/chat.php" method="post">
+        <textarea name="mensagem"></textarea>
         <input type="submit" name="acao" value="Enviar!">
     </form>
 
