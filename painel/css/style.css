@@ -682,6 +682,31 @@ form .form-group-login:nth-of-type(2){
     color: #646464;
 }
 
+/*Calendário*/
+
+table.calendario-table td{
+    border: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+}
+
+td.day-selected{
+    background: rgb(200,200,200);
+}
+
+.box-tarefas-single{
+    background:#F4B03E;
+    float:left;
+    width: 33.3%;
+    border: 4px solid white;
+    color: white;    
+}
+
+.box-tarefas-single h2{
+    font-size: 20px;    
+    padding: 0 8px;
+}
+
 @media screen and (max-width:1024px){
     .box-single-wraper{
         width: 100%;
