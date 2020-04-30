@@ -707,6 +707,20 @@ td.day-selected{
     padding: 0 8px;
 }
 
+.box-content a{
+    float:right;
+    padding: 0 20px;
+}
+
+a.posterior {
+   
+
+}
+
+a.anterior {
+   
+}
+
 @media screen and (max-width:1024px){
     .box-single-wraper{
         width: 100%;

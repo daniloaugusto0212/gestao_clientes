@@ -126,6 +126,7 @@
     <?php Painel::loadJS(array('controleFinanceiro.js'),'gerenciar-pagamentos'); ?>   
     <?php Painel::loadJS(array('empreendimentos.js'),'listar-empreendimentos'); ?>
     <?php Painel::loadJS(array('chat.js'),'chat'); ?>
+    <?php Painel::loadJS(array('calendario.js'),'calendario'); ?>
 </body>
 </html>
 
